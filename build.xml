@@ -12,7 +12,7 @@
     <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
     <target name="deploy">
       <!-- Upload the contents of the "mypkg" package -->
-      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" security token="C7MxYY8BUvsXYhmHoc0lMr12o" maxPoll="10000" deployRoot="./src" rollbackOnError="true"/>
+      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" security token="${sf.token}" maxPoll="10000" deployRoot="./src" rollbackOnError="true"/>
 	  
 	  </target>
       
