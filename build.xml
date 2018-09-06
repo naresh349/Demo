@@ -1,20 +1,17 @@
 <project name="Sample usage of Salesforce Ant tasks" default="deploy" basedir="." xmlns:sf="antlib:com.salesforce">
 
-    <property file="build.properties"/>
-    <property environment="env"/>
+	<property file="build.properties"/>
+	<property environment="env"/>
 
-		<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
-        <classpath>
-            <pathelement location="./ant-salesforce.jar" />        	
-        </classpath>
-    </taskdef>
+	<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+        	<classpath>
+            		<pathelement location="./ant-salesforce.jar" />        	
+        	</classpath>
+	</taskdef>
 	
-    <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
-    <target name="deploy">
-      <!-- Upload the contents of the "mypkg" package -->
-      <sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="10000" deployRoot="./src" rollbackOnError="true"/>
-	  
-	  </target>
+	<target name="deploy">
+    		<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="10000" deployRoot="./src" rollbackOnError="true"/>
+	</target>
       
       
 </project>
