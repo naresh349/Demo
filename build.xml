@@ -3,11 +3,11 @@
     <property file="build.properties"/>
     <property environment="env"/>
 
-		<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
+		<!--<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
         <classpath>
-            <pathelement location="../ant-salesforce.jar" />        	
+            <pathelement location="./ant-salesforce.jar" />        	
         </classpath>
-    </taskdef>
+    </taskdef> -->
 	
     <!-- Test out deploy and retrieve verbs for package 'mypkg' -->
     <target name="deploy">
