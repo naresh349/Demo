@@ -1,2 +1,1 @@
-# HCSC-Demo
 Demo purpose
