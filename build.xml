@@ -10,7 +10,7 @@
 	</taskdef>
 	
 	<target name="deploy">
-    		<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="10000" deployRoot="./src" rollbackOnError="true"/>
+    		<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="10000" deployRoot="./src" rollbackOnError="false"/>
 	</target>
       
       
