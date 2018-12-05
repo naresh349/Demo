@@ -9,7 +9,7 @@
         	</classpath>
 	</taskdef>
 	
-	<target name="deploy">
+	<target name="validation">
     		<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="10000" deployRoot="./src" rollbackOnError="false"/>
 	</target>
       
