@@ -23,9 +23,9 @@
     <sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="../Src" unpackaged="./package.xml"/>
   </target>
 
-  <macrodef name="git">
+<!--  <macrodef name="git">
     <attribute name="command" />
-    <!--<attribute name="dir" default="${gt.Directory}" />-->
+    <attribute name="dir" default="${gt.Directory}" />
     <element name="args" optional="true" />
     <sequential>
         <echo message="git @{command}" />
@@ -51,7 +51,7 @@
                 <arg value="-am ${gt.commitMessage}" />
             </args>
         </git>
-    </target>
+    </target> -->
 
   <target name="validate">
 
