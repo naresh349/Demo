@@ -1,26 +1,31 @@
-<project name="Sample usage of Salesforce Ant tasks" default="deploy" basedir="." xmlns:sf="antlib:com.salesforce">
+<project xmlns:sf="antlib:com.salesforce" basedir="."
+	name="Sample Build file for ANT migration tool" default="deploy">
 
-	<!--test-->
-	<property file="build.properties"/>
-	
-	<taskdef resource="com/salesforce/antlib.xml" uri="antlib:com.salesforce">
-        	<classpath>
-            		<pathelement location="./ant-salesforce.jar" />        	
-        	</classpath>
-	</taskdef>
-	
-	<target name="validation">
-    		<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="10000" deployRoot="./src" rollbackOnError="false"/>
-	</target>
-	
-	<target name="retrieve">
+  <property file="build.properties"/>
+  <property environment="env" />
+  <property name="ant.jar" value="./lib/ant-salesforce.jar"/>
+
+  <property name="sf.username" value="${salesforce.username}" />
+  <property name="sf.password" value="${salesforce.password}" />
+  <property name="sf.serverurl" value="${salesforce.loginurl}" />
+  <property name="sf.testLevel" value="${salesforce.testLevel}" />
+
+  <!-- Build classpath -->
+  <path id="antlib">
+    <fileset dir="lib"/>
+  </path>
+
+  <!-- Define the Taskdef for Ant migration tool -->
+  <taskdef resource="com/salesforce/antlib.xml" classpath="./lib/ant-salesforce.jar" uri="antlib:com.salesforce"/>
+
+  <target name="retrieve">
     <mkdir dir="../Src" />
     <sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" retrieveTarget="../Src" unpackaged="./package.xml"/>
   </target>
 
-  <!--<macrodef name="git">
+  <macrodef name="git">
     <attribute name="command" />
-    <attribute name="dir" default="${gt.Directory}" />
+    <!--<attribute name="dir" default="${gt.Directory}" />-->
     <element name="args" optional="true" />
     <sequential>
         <echo message="git @{command}" />
@@ -46,7 +51,22 @@
                 <arg value="-am ${gt.commitMessage}" />
             </args>
         </git>
-    </target>-->
-      
-      
+    </target>
+
+  <target name="validate">
+
+    <echo message="Validating merged metadata from Deployment directory..." />
+
+    <sf:deploy
+			singlePackage="true"
+			username="${sf.username}"
+      password="${sf.password}"
+      serverurl="${sf.serverurl}"
+      TESTLEVEL="${sf.testLevel}"
+			CHECKONLY="true"
+			deployRoot="../Src"
+		/>
+
+  </target>
+
 </project>
